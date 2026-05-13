@@ -52,7 +52,7 @@ BEGIN
         SET MESSAGE_TEXT = 'Vehicle is not available!';
     ELSE
         INSERT INTO Deliveries (Order_ID, Vehicle_ID, Estimated_Time, Delivery_Status, Driver_Note)
-        VALUES (p_order_id, p_vehicle_id, DATE_ADD(NOW(), INTERVAL 3 DAY), 'In Transit', 'Auto-assigned');
+        VALUES (p_order_id, p_vehicle_id, DATE_ADD(NOW(), INTERVAL 3 DAY), 'In Transit', 'Handle with care');
         UPDATE Vehicles SET Availability = 0 WHERE Vehicle_ID = p_vehicle_id;
         UPDATE Orders SET Status = 'Shipping' WHERE Order_ID = p_order_id;
     END IF;
